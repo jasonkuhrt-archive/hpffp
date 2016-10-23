@@ -92,4 +92,39 @@ f(1) = B
 
 * remember that a non RT "function" is an invalid mathematical function and since Haskell is a PLP it is an invalid Haskell function too
 * thinking of functions as a mapping of inputs to outputs is crucial to being effective with FP
+
+
+
+## 1.4 The structure of lambda terms
+
+* three basic components: variables, expressions, abstractions
+* expression is a superset of variables and expressions
+
+* "expression"
+* variable
+* abstraction
+* combination thereof
+
+* "variable"
+* names for potential inputs to functions
+* no meaning or value
+
+* "abstraction"
+* a function
+* has a head, body
+* applied to an input
+* e.g.  𝝺n.n
+
+* "head"
+* symbol "𝝺" followed by a parameter
+
+"body"
+* an expression
+
+"parameter"
+* a variable in head
+* binds all instances of variable found in body to the represented value (the value that the parameter represents)
+
+"alpha equivalence"
+* the idea that 𝝺x.x and 𝝺v.v mean the same thing since the variable is not semantically meaningful
 -}
