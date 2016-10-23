@@ -56,4 +56,40 @@ main = undefined
 
 * "abstraction"
 * write shoter more concise programs by factoring common repeated structures into more generic code that can be reused
+
+
+
+## 1.3 What is a function?
+
+* "domain"
+* the set of a function's inputs
+
+* "codomain"
+* the set of a function's _unique_ outputs
+
+* "range"
+* the set of a function's possible outputs _as related to different inputs_
+* unlike codomain this set may have values repeated since two different inputs may result in the same output
+* e.g. various inputs 9,8,7... given to function `(< 10)` (is less than 10) all produce the same output
+
+* given f (< 10)
+* codomain {True, False}
+* range {..., 9->True, 10->False, ...} (infinite: all integers below 10 mapping to true, all integers above 9 mapping to false)
+
+* `f` is RT because the same output is always returned for the same input
+
+f(1) = A
+f(2) = B
+f(3) = C
+f(4) = D
+f(5) = D
+f(6) = D
+
+* `f` is _not_ RT because input 1 maps to output A _OR_ B?!
+
+f(1) = A
+f(1) = B
+
+* remember that a non RT "function" is an invalid mathematical function and since Haskell is a PLP it is an invalid Haskell function too
+* thinking of functions as a mapping of inputs to outputs is crucial to being effective with FP
 -}
