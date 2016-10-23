@@ -140,7 +140,7 @@ f(1) = B
 
 * application in lambda calculus is left-associative
 * this means application associates or groups from and toward the left
-* so (𝝺x.x)(𝝺v.v)(𝝺z.z)a means ( ( (𝝺x.x)(𝝺v.v) )(𝝺z.z) ) a
+* so (𝝺x.x)(𝝺v.v)(𝝺z.z)a   ==   ( ( (𝝺x.x)(𝝺v.v) )(𝝺z.z) ) a
 
 * "free variables"
 * in body but not bound by head
@@ -148,4 +148,46 @@ f(1) = B
 * a computation is an initial lambda expression (or two if separating initial input) and a finite sequence of lambda terms each deduced from the proceeding term by one application of beta reduction.
 
 * alpha equivalence does not apply to free variables
+
+
+
+## 1.6 Multiple arguments
+
+* strictly speaking a function can only have one input
+* functions that require multiple inputs achieve this via nested heads
+* Discovered by Moses Schönfinkel 1920s, rediscovered by Haskell Curry
+* when a multi-input function is applied to an input the outer most head is eliminated (and as always the variables in body bound to the parameter in head being eliminated are replaced with the value), leaving the next head, and so on
+* e.g.:
+
+𝝺xvz.xvz   ==   𝝺x.(𝝺v.(𝝺z.xvz))
+
+* in academia it is common to use abstract variables rather than concrete values
+* names of variables have no significance in and of themselves, what is important however is understanding the head whose parameter binds that name
+
+* example beta reduction of (𝝺xyz.xz(yz))(𝝺mn.m)(𝝺p.p)
+
+** Explicit currying
+   (𝝺x.𝝺y.𝝺z.xz(yz)) (𝝺m.𝝺n.m) (𝝺p.p)
+** Explicit grouping
+   ((𝝺x.𝝺y.𝝺z.xz(yz)) (𝝺m.𝝺n.m)) (𝝺p.p)
+** beta reduce step, (𝝺m.𝝺n.m) -> x
+   (𝝺y.𝝺z.(𝝺m.𝝺n.m)z(yz)) (𝝺p.p)
+** beta reduce step, (𝝺p.p) -> y
+   𝝺z.(𝝺m.𝝺n.m)z((𝝺p.p)z)
+** beta reduce step, z -> m
+   𝝺z.(𝝺n.z)((𝝺p.p)z)
+** beta reduce step, ((𝝺p.p)z) -> n, tossed, no n binding in body
+   𝝺z.z
+
+* observe above how beta reduction works from outer-most left-most
+
+### Exercises: Equivalence
+
+1. Answer B
+   𝝺xy.xz   ==   𝝺mn.mz
+   Alpha Equivalence. The names do not matter just their pattern.
+2. Answer C
+   𝝺xy.xxy   ==   𝝺a(𝝺b.aab)
+2. Answer B
+   𝝺xyz.zx   ==   𝝺tos.st
 -}
