@@ -190,4 +190,27 @@ f(1) = B
    𝝺xy.xxy   ==   𝝺a(𝝺b.aab)
 2. Answer B
    𝝺xyz.zx   ==   𝝺tos.st
+
+
+
+### 1.7 Evaluation is simplification
+
+* "beta normal form"
+* when you cannot reduce the terms any further (AKA evaluate, AKA apply lambdas to arguments)
+* the reduced form of an expression is its normal form
+* e.g. 2 is the normal form of 2000 / 1000
+
+"saturated"
+* a function with all parameters applied
+
+* a saturated lambda not simplified to final result is therefore not fully evaluated–merely applied.
+
+* ... application is what makes evaluation/simplification possible
+
+* e.g. NOT in beta normal form
+  (𝝺x.x)z
+
+* e.g. IN beta normal form
+  z
+  𝝺x.x
 -}
