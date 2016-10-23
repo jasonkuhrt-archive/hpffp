@@ -127,4 +127,25 @@ f(1) = B
 
 "alpha equivalence"
 * the idea that 𝝺x.x and 𝝺v.v mean the same thing since the variable is not semantically meaningful
+
+
+
+## 1.5 Beta reduction
+
+* "beta reduction"
+* the process of applying an abstraction to an input
+* replace all instances of bound variables within body with input expression
+* eliminate head (its only purpose was to bind a variable AKA parameter)
+* recursive process, stops when any of: no more heads (AKA lambdas), no more inputs to apply functions to
+
+* application in lambda calculus is left-associative
+* this means application associates or groups from and toward the left
+* so (𝝺x.x)(𝝺v.v)(𝝺z.z)a means ( ( (𝝺x.x)(𝝺v.v) )(𝝺z.z) ) a
+
+* "free variables"
+* in body but not bound by head
+
+* a computation is an initial lambda expression (or two if separating initial input) and a finite sequence of lambda terms each deduced from the proceeding term by one application of beta reduction.
+
+* alpha equivalence does not apply to free variables
 -}
