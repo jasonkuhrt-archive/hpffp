@@ -193,7 +193,7 @@ f(1) = B
 
 
 
-### 1.7 Evaluation is simplification
+## 1.7 Evaluation is simplification
 
 * "beta normal form"
 * when you cannot reduce the terms any further (AKA evaluate, AKA apply lambdas to arguments)
@@ -216,14 +216,14 @@ f(1) = B
 
 
 
-### 1.8 Combinators
+## 1.8 Combinators
 
 * "combinator"
 * a lambda term with no free variables and serve only to combine the arguments they are given
 
 
 
-### 1.9 Divergence
+## 1.9 Divergence
 
 * "divergence"
 * lambda terms that whose beta reduction never terminates
