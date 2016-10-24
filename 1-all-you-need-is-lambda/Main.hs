@@ -231,4 +231,18 @@ f(1) = B
 * typically beta reduction converges to beta normal form
 * terms that diverge are terms that do no produce an answer/meaningful result
 * understanding what will terminate means understanding what will do useful work
+
+
+
+## 1.10 Summary
+
+* functions have head and body
+* functions have one input and produce one output
+* functions always produce the same output for the same input
+* functions map an input set to an output set
+* variables may be bound in a function head
+* every variable instance in function body is the same value
+* FP is based on three kinds of expressions: variables, functions, expressions combined with other expressions
+* haskell has lots of sugar but semantically and at its core is a lambda calculus
+* haskell is actually a _typed_ lambda calculus
 -}
