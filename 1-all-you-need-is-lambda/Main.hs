@@ -245,4 +245,122 @@ f(1) = B
 * FP is based on three kinds of expressions: variables, functions, expressions combined with other expressions
 * haskell has lots of sugar but semantically and at its core is a lambda calculus
 * haskell is actually a _typed_ lambda calculus
+
+
+
+## 1.11 Chapter Exercises
+
+### Are these combinators?
+
+1. 𝝺x.xxx
+   YES
+
+2. 𝝺xy.zx
+   NO z is a free variable
+
+3. 𝝺xyz.xy(zx)
+   YES
+
+4. 𝝺xyz.xy(zxy)
+   YES
+
+5. 𝝺xy.xy(zxy)
+   NO z is a free variables
+
+### Normal form or diverge?
+
+1. 𝝺x.xxx
+   is normal form (cannot be further reduced)
+
+2. (𝝺z.zz)(𝝺y.yy)
+   diverges, this is omega
+
+3. (𝝺x.xxx)z
+   has normal form zzz
+
+### Beta reduce
+
+1.  (𝝺abc.cba)zz(𝝺wv.w)
+    ((𝝺abc.cba)zz)(𝝺wv.w)
+    ((𝝺[a:=z]bc.cba)z)(𝝺wv.w)
+    ((𝝺bc.cbz)z)(𝝺wv.w)
+    (𝝺[b:=z]c.cbz)(𝝺wv.w)
+    (𝝺c.czz)(𝝺wv.w)
+    (𝝺[c:=(𝝺wv.w)].czz)
+    (𝝺wv.w)zz
+    ((𝝺wv.w)z)z
+    (𝝺[w:=z]v.w)z
+    (𝝺v.z)z
+    𝝺[v:=z].z
+    z
+
+2.  (𝝺x.𝝺y.xyy)(𝝺a.a)b
+    ((𝝺xy.(xy)y)(𝝺a.a))b
+    (𝝺[x:=(𝝺a.a)]y.(xy)y)b
+    (𝝺y.((𝝺a.a)y)y)b
+    𝝺[y:=b].((𝝺a.a)y)y
+    ((𝝺a.a)b)b
+    (𝝺[a:=b].a)b
+    (b)b
+    bb
+
+3.  (𝝺y.y)(𝝺x.xx)(𝝺z.zq)
+    ((𝝺y.y)(𝝺x.xx))(𝝺z.zq)
+    (𝝺[y:=(𝝺x.xx)].y)(𝝺z.zq)
+    (𝝺x.xx)(𝝺z.zq)
+    (𝝺[x:=(𝝺z.zq)].xx)
+    (𝝺z.zq)(𝝺z.zq)
+    𝝺[z:=(𝝺z.zq)].zq
+    (𝝺z.zq)q
+    𝝺[z:=q].zq
+    qq
+
+4.  (𝝺z.z)(𝝺z.zz)(𝝺z.zy)
+    ((𝝺z.z)(𝝺z.zz))(𝝺z.zy)
+    (𝝺[z:=(𝝺z.zz)].z)(𝝺z.zy)
+    (𝝺z.zz)(𝝺z.zy)
+    (𝝺[z:=(𝝺z.zy)].zz)
+    (𝝺z.zy)(𝝺z.zy)
+    (𝝺[z:=(𝝺z.zy)].zy)
+    (𝝺z.zy)y
+    𝝺[z:=y].zy
+    yy
+
+5.  (𝝺x.𝝺y.xyy)(𝝺y.y)y
+    ((𝝺xy.(xy)y)(𝝺y.y))y
+    (𝝺[x:=(𝝺y.y)]y.(xy)y)y
+    (𝝺y.((𝝺y.y)y)y)y
+    𝝺[y:=y].((𝝺y.y)y)y
+    ((𝝺y.y)y)y
+    (𝝺[y:=y].y)y
+    (y)y
+    yy
+
+6.  (𝝺a.aa)(𝝺b.ba)c
+    ((𝝺a.aa)(𝝺b.ba))c
+    ((𝝺[a:=(𝝺b.ba)].aa))c
+    ((𝝺b.ba)(𝝺b.ba))c
+    (𝝺[b:=(𝝺b.ba)].ba)c
+    ((𝝺b.ba)a)c
+    (𝝺[b:=a].ba)c
+    (aa)c
+    aac
+
+7.  (𝝺xyz.xz(yz)) (𝝺x.z) (𝝺x.a)
+
+    x := (𝝺x.z1)                   <--  tricky step [1]
+    (𝝺yz.(𝝺x.z1) z (yz)) (𝝺x.a)
+
+    y := (𝝺x.a)
+    𝝺z.(𝝺x.z1) z ((𝝺x.a)z)
+
+    x := z
+    𝝺z.z1 ((𝝺x.a)z)
+
+    x := z
+    𝝺z.z1 a
+
+    𝝺z.z1a
+
+* [1] Remap name of free variable z to z1 so that it does not conflict with z of the first lambda whose body this function expression is about to be inserted into. Alternatively one could just as well remap the name of the bound variable involved in the conflict.
 -}
