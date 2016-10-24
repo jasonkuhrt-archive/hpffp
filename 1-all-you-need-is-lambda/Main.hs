@@ -220,4 +220,15 @@ f(1) = B
 
 * "combinator"
 * a lambda term with no free variables and serve only to combine the arguments they are given
+
+
+
+### 1.9 Divergence
+
+* "divergence"
+* lambda terms that whose beta reduction never terminates
+
+* typically beta reduction converges to beta normal form
+* terms that diverge are terms that do no produce an answer/meaningful result
+* understanding what will terminate means understanding what will do useful work
 -}
