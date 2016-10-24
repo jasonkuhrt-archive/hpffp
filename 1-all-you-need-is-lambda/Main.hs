@@ -213,4 +213,11 @@ f(1) = B
 * e.g. IN beta normal form
   z
   𝝺x.x
+
+
+
+### 1.8 Combinators
+
+* "combinator"
+* a lambda term with no free variables and serve only to combine the arguments they are given
 -}
