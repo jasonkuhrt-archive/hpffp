@@ -143,3 +143,52 @@ timesMiniPi n = n * 3.14
 
 timesPi :: Float -> Float
 timesPi n = n * pi
+
+{-
+## 2.6 Infix operators
+
+"prefix syntax"
+* default for functions
+* means function being applied is at the beginning of the expression rather than e.g. the middle
+
+"operator"
+* function that can be used infix style
+
+* all operators are functions, not vice versa
+* functions can be used infix style by wrapping them with backticks
+* operators can be used function style by wrapping them with parentheses
+
+* :info command in ghci can show info about functions including their:
+  * associativity
+  * precedence
+  * is operator or not
+* e.g.:
+
+  :info (*)
+  infixl  7  *
+  [1]    [2][3]
+
+* [1] is an infix operator, left associative
+* [2] precedence, scale 0-9, higher is applied first
+* [3] infix name
+
+"left associative operator"
+* means `2 * 3 * 4` is same as `(2 * 3) * 4`
+
+"right associative operator"
+* means `2 ^ 3 ^ 4` is same as `2 ^ (3 ^ 4)`
+* means `2 ^ 3 ^ 4` (241...) is not same as `(2 ^ 3) ^ 4` (4096)
+
+### Exercises: Parentheses and Association
+
+Are parentheses needed in the following expressions?
+
+1. (8 + 7) * 9
+   YES, * takes precedence otherwise
+
+2. perimeter x y = (x * 2) + (y * 2)
+   NO, * is higher precedence anyways
+
+3. f x = x / (2 + 9)
+   YES, / takes precedence otherwise
+-}
