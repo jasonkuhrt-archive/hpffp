@@ -36,6 +36,37 @@ sayHello x = putStrLn ("Hello, " ++ x ++ "!")
 {-
 * `::` denotes a type
 * can be read as "... has the type of ..."
-* in ghci use :load to load a file, path is relative to `pwd` 
+* in ghci use :load to load a file, path is relative to `pwd`
 * in ghci use :module to unload the loaded module
+
+
+
+## 2.3 Understanding expressions
+
+* everything is an expression or declaration
+* expressions may be values, combinations of values, functions applied to values
+* expressions evaluate to a result
+* expressions are building blocks
+* a program is one giant expression
+
+* "declaration"
+* top-level binding that permit naming expressions
+* example expressions:
+
+  1
+  1 + 1
+  "Icarus"
+* 1 is an expression, has no further reduction step, "stands for itself"
+
+"normal form"
+* an expression for which no more evaluation steps may be taken
+* AKA reached an irreducible form
+
+"redex"
+* a reducible expression
+
+"evaluation"
+* AKA reduction
+* AKA normalizing, but imprecise
+* AKA executing, but imprecise
 -}
