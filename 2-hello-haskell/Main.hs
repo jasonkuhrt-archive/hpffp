@@ -69,4 +69,32 @@ sayHello x = putStrLn ("Hello, " ++ x ++ "!")
 * AKA reduction
 * AKA normalizing, but imprecise
 * AKA executing, but imprecise
+
+
+
+## 2.4 Functions
+
+"function" in Haskell
+* based on the mathematical function
+* an expression that is applied to a (one) argument, returns a (one) result
+* maps inputs to outputs
+
+"argument"
+* value passed to function parameter when function is applied
+
+* b/c built purely of expressions always evaluate to the same result when given the same values
+* multi-parameter functions use currying
+* functions can be an argument to another function or nested in a function body
+* to introduce functions in ghci `let` must be used (not needed in a source file) e.g.
+
+  let triple x = x * 3
+      ^      ^   ^^^^^
+      name   |       |
+             param   |
+                     body
+
+* Once a function is applied you can replace it with its body whose bound variables are now replaced by the arguments
 -}
+
+triple :: Int -> Int
+triple x = x * 3
