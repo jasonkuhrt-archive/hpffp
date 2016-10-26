@@ -1,6 +1,5 @@
 
-main :: IO ()
-main = undefined
+module Chapter1 where
 
 {-
 # Chapter 1 – All You Need is Lambda

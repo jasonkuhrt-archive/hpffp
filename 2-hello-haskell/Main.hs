@@ -1,5 +1,5 @@
-main :: IO ()
-main = undefined
+
+module Chapter2 where
 
 {-
 # Chapter 2 – Hello, Haskell!
