@@ -98,3 +98,48 @@ sayHello x = putStrLn ("Hello, " ++ x ++ "!")
 
 triple :: Int -> Int
 triple x = x * 3
+
+{-
+## 2.5 Evaluation
+
+* "evaluation"
+* reduce the terms of an expression until the expression reaches its simplest form
+* usually the result is called a value
+* AKA application since applying a function to an argument allows evaluation
+
+* Haskell uses a lazy evaluation strategy
+* terms are not evaluated until they are forced to by another term referring to them
+* this is to say that by default Haskell does not evaluate to normal form, but rather weak head normal form (WHNF)
+* approximated example:
+
+  (\ x -> (1, 2 + x)) 2
+
+evaluation result in `normal order`: `(1, 4)`
+evaluation result in WHNF:           `(1, 2 + 2)`
+
+### Exercises: Comprehension Check
+
+1. Rewrite these to make them work in ghci:
+
+  half x = x / 2
+  let half x = x / 2
+
+  square x = x * x
+  let square x = x * x
+
+2. Write function that can work for all the following expressions:
+  3.14 * (5 * 5)
+  3.14 * (10 * 10)
+  3.14 * (2 * 2)
+  3.14 * (4 * 4)
+-}
+
+timesMiniPi :: Float -> Float
+timesMiniPi n = n * 3.14
+
+{-
+3. Rewrite using `pi`
+-}
+
+timesPi :: Float -> Float
+timesPi n = n * pi
