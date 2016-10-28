@@ -191,4 +191,80 @@ Are parentheses needed in the following expressions?
 
 3. f x = x / (2 + 9)
    YES, / takes precedence otherwise
+
+
+
+## 2.7 Declaring values
+
+* declare a module name so that it can be imported
+* syntax is whitespace sensitive
+* general rule is that expressions wrapped onto the next line need to indent at least one character, then stay at that indent level e.g.:
+
+  -- error
+
+  f1 = 'a'
+  == 'b'
+
+  -- ok
+-}
+
+f1 :: Bool
+f1 = 'a'
+  == 'b'
+
+{-
+* Examples with let ... in syntax:
+-}
+
+f2 :: [String]
+f2 =
+  let
+    -- `foo` and `bar` must line up
+    foo = "foo"
+    bar = "bar"
+  in
+    -- `qux` and `wux` must line up
+    let qux = "qux"
+        wux = "wux"
+    in
+    let
+    -- `fuf` and `bux` must line up
+    fuf = "fuf"
+    bux = "bux"
+    in
+    [foo, bar, qux, wux, fuf, bux] {-
+    or even either:
+      [foo, bar, qux, wux, fuf, bux]
+  [foo, bar, qux, wux, fuf, bux] -}
+
+{-
+
+### Intermission Exercises
+
+Fix whitespace or other errors.
+
+1. let area x = 3. 14 * (x * x)
+
+   period in 3. 14 interpreted as composition operator
+   fix:
+
+   let area x = 3.14 * (x * x)
+
+2. let double x = b * 2
+
+   b is undefined
+   fix:
+
+   let double x = x * 2
+
+3. x = 7
+    y = 10
+   f = x + y
+
+   y indented too much
+   fix:
+
+   x = 7
+   y = 10
+   f = x + y
 -}
