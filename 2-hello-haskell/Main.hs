@@ -1,6 +1,8 @@
 
 module Chapter2 where
 
+{-# ANN module "HLint: ignore Redundant bracket" #-}
+
 {-
 # Chapter 2 – Hello, Haskell!
 
@@ -267,4 +269,110 @@ Fix whitespace or other errors.
    x = 7
    y = 10
    f = x + y
+
+
+
+## 2.8 Arithmetic functions in Haskell
+
+* div and quot have different rounding logic
+* `/` operator uses typeclasses
+* there is a law that each quot/rem and div/mod operations pair follow
+* the pairings hint at the said differences of rounding between div and quot
+* the law is: given a numerator and denominator value, apply dividing function, multiply result by denominator value, add result of applying remainder function, equals numerator
+* notationally:
+-}
+
+type Numerator   = Int
+type Denominator = Int
+
+lawQuotRem :: Numerator -> Denominator -> Bool
+lawQuotRem n d = ((quot n d) * d) + (rem n d) == n
+
+{-
+* the law's pattern is the same for the div/mod pair:
+-}
+
+lawDivMod :: Numerator -> Denominator -> Bool
+lawDivMod n d = ((div n d) * d) + (mod n d) == n
+
+{-
+* the law shows a relationship.
+* a different rounding mechanism in regards to two groups of integral division
+* each group having a division operation and remainder operation
+* combining a pair of these operations (from the same group) effectively undoes the division.
+* the basic idea seems to be:
+  * multiplication undoes the _integer_ divison, meaning except what was rounded
+  * adding the remainder undoes just the division's rounding
+* another law (not sure this is interesting, since its the already established semantic differentiation of the pairings) is regarding the remainder of the division operation always being equal to the remainder operation
+-}
+
+law2DivMod :: Numerator -> Denominator -> Bool
+law2DivMod n d = (n - (div n d) * d) == (mod n d)
+
+{-
+* "mod"
+* operation for modular arithmetic
+* gives remainder of modular division
+
+* "modular arithmetic"
+* system of arithmetic for integers where numbers "wrap around" upon reaching a certain value, called the modulus
+* e.g. in a 12 hour clock we wrap counting around the 12 e.g. 8am + 8h is not 16 o'clock but rather 4 o'clock
+* this example would be called arithmetic modulo 12
+* in modulo n, n is equal to itself and zero
+* in modular division the denominator is the modulus
+* e.g. clocks are modulo 12: 11:00pm + 1h is 00:00am
+* e.g. months are modulo 12: Dec (11) + 1m is Jan (0)
+* e.g. days of week are modulo 7: Sun (6) + 1d is Mon (0)
+
+* modular arithmetic often gives same answer as arithmetic
+* however three examples of differences:
+
+  * if the denominator is a divisor of the numerator (evenly divides it) then the result is 0, since numerator wrapping around denominator finishes at denominator AKA the modulus and the modulus is equal to 0
+
+    mod 10 5 == 0
+    div 10 5 == 2
+
+  * if numerator is lower than denominator then result is numerator
+
+    mod 10 12 == 10
+    div 10 12 == 0
+
+  * result has same sign as denominator, whereas with rem result has same sign as numerator.
+  * this behaviour is particular to mod in Haskell, not mod in all languages
+
+    mod 11 (-5) == (-4) -- (wraps backwards)
+    rem 11 (-5) == 1
+    rem (-11) 5 == (-1)
+    mod (-11) 5 == 4 -- (wraps backwards)
+    mod (-11) (-5) == (-1)
+
+  * if xor numerator/denominator negative then:
+    multiple of denominator closest to numerator on side **farthest** from zero (X), subtract X from numerator
+
+    mod (-10) 6 ==   2   -- -10 - -12 ==  2
+    mod 10 (-6) == (-2)  --  10 -  12 == -2
+                              ^    ^
+                              |    | closest multiple on side farthest from zero
+                              | numerator
+
+  * otherwise:
+    multiple of denominator closest to numerator on side **closest** to zero (X), subtract X from numerator
+
+    mod (-10) (-6) == (-4) -- -10 - -6 == -4
+    mod   10    6  ==   4  --  10 -  6 ==  4
+                                ^    ^
+                                |    | closest multiple on side closest to zero
+                                | numerator
+
+* book suggests that mod takes more experience than div to know when to use
+
+### Negative Numbers
+
+* negative numbers on their own can be written as e.g. `-10`
+* what is actually happening is that `-` is a unary operator
+* negative numbers used in expressions does not work the same
+* e.g.: `5 + -10` does not work because haskell now reads `-` not as a negate operator but as a subtraction operator
+* `5 + (-10)` or `5 + (negate 10)` does work
+* so in Haskell the `-` operator is overloaded
+* overloaded operators in Haskell are an exception
 -}
