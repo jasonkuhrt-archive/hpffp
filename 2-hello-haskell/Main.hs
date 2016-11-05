@@ -450,3 +450,62 @@ where3 =
   x = 7
   y = negate x
   z = y * 10
+
+{-
+
+## 2.11 Chapter Exercises
+
+* Before testing something think of a hypothesis about what the thing you are about to test should do.
+
+### Parenthesization
+
+Given knowledge about precedence of operators, put explicit parentheses that do not change the result.
+
+1. 2 + 2 * 3 - 1  ==  (2 + (2 * 3)) - 1
+2. ((^) 10 $ 1 + 1)  ==  10 ^ (1 + 1)
+3. 2 ^ 2 * 4 ^ 5 + 1  ==  ((2 ^ 2) * (4 ^ 5)) + 1
+
+### Equivalent Expressions?
+
+1. 1 + 1 == 2
+2. 10 ^ 2 == 10 + 9 * 10
+3. 400 - 37 /= (-) 37 400
+4. 100 `div` 3 /= 100 / 3 -- Type error!
+5. 2 * 5 + 18 /= 2 * (5 + 18)
+
+### More Fun With Functions
+
+a. z = 7
+   let z = 7 -- REPL Style, 7
+d. y = z + 8
+   let y = z + 8 -- REPL Style, 15
+b. x = y ^ 2
+   let x = y ^ 2 -- REPL Style, 225
+c. waxOn = x * 5
+   let waxOn = x * 5 -- REPL Style, 1125
+
+1a. 10 + waxOn == 1135
+1b. (+10) waxOn == 1135
+1c. (-) 15 waxOn == (-1110)
+
+2. Introduce to REPL: let triple x = x * 3
+
+3. triple waxOn == 3375
+
+4. waxOn using `where` clause
+-}
+waxOn :: Int
+waxOn =
+  x * 5
+  where
+  z = 7
+  y = z + 8
+  x = y ^ 2
+{-
+5. `triple` using `whwere` clause
+-}
+triple' :: Int -> Int
+triple' x = x * 3
+{- 6. play with combinations of waxOff and waxOn -}
+waxOff :: Int -> Int
+waxOff x = triple x
