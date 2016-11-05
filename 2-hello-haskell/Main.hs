@@ -401,4 +401,52 @@ law2DivMod n d = (n - (div n d) * d) == (mod n d)
   (-2) 1
 
   because it is interpreted as negative 2 applied to 1
+
+
+
+## 2.10 Let and where
+
+* `let` and `where` are fundamentally different
+* `let` introduces an expression
+  usable whever an expression is
+* `where` is a declaration
+  bound to a surrounding syntactic structure
+
+### Intermission Exercises: A Head Code
+
+1. let x = 5 in x
+   5
+2. let x = 5 in x * x
+   25
+3. let x = 5; y = 6 in x * y
+   30
+4. let x = 3; y = 1000 in x + 3
+   6
+
+Now Rewrite as where clauses
 -}
+
+-- 1. let x = 3; y = 1000 in x + 3
+where1 :: Int
+where1 =
+  x + 3
+  where
+  x = 3
+  -- y = 1000 -- Comment to avoid lint warning
+
+-- 2. let y = 10; x = 10 * 5 + y in x * 5
+where2 :: Int
+where2 =
+  x * 5
+  where
+  y = 10
+  x = 10 * 5 + y
+
+-- 3. let x = 7; y = negate x; z = y * 10 in z / x + y
+where3 :: Double
+where3 =
+  z / x + y
+  where
+  x = 7
+  y = negate x
+  z = y * 10
