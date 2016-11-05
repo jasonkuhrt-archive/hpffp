@@ -375,4 +375,30 @@ law2DivMod n d = (n - (div n d) * d) == (mod n d)
 * `5 + (-10)` or `5 + (negate 10)` does work
 * so in Haskell the `-` operator is overloaded
 * overloaded operators in Haskell are an exception
+
+
+
+## 2.9 Parenthesization
+
+* `$` is defined with lowest possible precedence (0)
+* very commonly used in idiomatic Haskell code
+
+* operators can be used prefix-style if wrapped in `()`
+
+  (*) 2 2
+
+* operators can be referred as value if wrapped in `()`
+
+  (fmap (*) [2,2]) <*> [2,2]
+
+* "sectioning"
+* applying either-or operator's first or second param
+
+  (^2), (2/), ...
+
+* subtraction is special case, following does not work:
+
+  (-2) 1
+
+  because it is interpreted as negative 2 applied to 1
 -}
