@@ -494,6 +494,7 @@ c. waxOn = x * 5
 
 4. waxOn using `where` clause
 -}
+
 waxOn :: Int
 waxOn =
   x * 5
@@ -501,11 +502,54 @@ waxOn =
   z = 7
   y = z + 8
   x = y ^ 2
-{-
-5. `triple` using `whwere` clause
--}
+
+{- 5. `triple` using `whwere` clause -}
+
 triple' :: Int -> Int
 triple' x = x * 3
+
 {- 6. play with combinations of waxOff and waxOn -}
+
 waxOff :: Int -> Int
 waxOff x = triple x
+
+{-
+
+## 2.12 Definitions
+
+* "parameter"
+* _represents_ a value that will be passed ot function when the function is called
+* usually variables
+
+* "argument"
+* an input value the function is applied to
+* a function's parameter is bound to an argument value when a function is applied to said argument
+
+* "expression"
+* combinations of symbols conforming to syntactic rules and can be evaluated to some result
+* irreducible constants (e.g. `1`) are technically expressions they are more commonly just called "values"
+* therefore expression usually implies a redex
+
+* "redex"
+* a reducible expression
+
+* "value"
+* expression that cannot be reduced (AKA evaluated) further
+
+* "function"
+* mathematical object whose capabilities are limited to
+  being applied to an argument
+  returning a result
+* can be described as a mapping between input to output
+
+* "infix notation"
+* style used in arithmetic and logic
+* an operator placed between operands (AKA arguments)
+
+* "operator"
+* function that is infix by default
+* in Haskell operators must use symbols (non alphanumeric)
+
+* "syntactic sugar"
+* syntax within a programming language designed to make expressions easier to write and/or read
+-}
