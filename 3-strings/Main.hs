@@ -1,4 +1,7 @@
 module Chapter3 where
+
+{-# ANN module "HLint: ignore Use String" #-}
+
 {-
 
 ## 3.1 Printing strings
@@ -236,6 +239,32 @@ rvrs =
 
 {-
 
-6. Put rvrs into a module 
+6. Put rvrs into a module
    I skipped this because it seemed too basic to me personally.
+
+
+
+## 3.9 Definitions
+
+* a string is a sequence of characters
+* in Haskell String is represented by a linked-list of Char values AKA [Char]
+* a type (AKA datatype) is a classification of values (AKA data)
+* unlike other languages Haskell types do not delimit the operations that can beperformed on that data
+* we sometimes say a value "inhabits" the type of ...
+* concatenation means linking together sequences of values
+
+* "scope"
+* where a variable referred to be name (AKA identifier) is valid
+* AKA "visibility"
+
+* "local bindings"
+* bindings that are child to some parent expression
+* different from "top level" bindings in that they are not visible module-wide and cannot be exported and thus cannot be imported by external modules
+
+* "top-level bidning"
+* bindings outside of any other declaration
+* can be shared across module and/or with other external modules
+
+* "data structures"
+* different ways of organizing data for convenience and performance according each according to different use-case(s)
 -}
