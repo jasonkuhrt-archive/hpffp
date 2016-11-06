@@ -147,4 +147,10 @@ Will these compile and if not fix them.
 ## 3.6 Concatenation and Scoping
 
 * `++` is right associative
+
+
+
+## 3.7 More List Functions
+
+*  since string type is just an alias type for a list of characters all functions that can act on lists can act on strings
 -}
