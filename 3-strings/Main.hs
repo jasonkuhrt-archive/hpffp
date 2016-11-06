@@ -141,4 +141,10 @@ Will these compile and if not fix them.
 
 3. concat ["<3", " Haskell"]
    OK!
+
+
+
+## 3.6 Concatenation and Scoping
+
+* `++` is right associative
 -}
