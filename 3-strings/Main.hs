@@ -107,5 +107,38 @@ print1 = putStrLn "hello world!"
     where
     r = d / 2
 
-  YES  
+  YES
+
+
+
+## 3.5 Types of Concatenation Functions
+
+* anytime we want to refer to an operator (AKA infix function) not in infix position we must syntactically wrap it in parentheses, even in ghci e.g. `:type (+)`
+
+* concat is like flatten from JavaScript lodash
+
+  concat [[1],[2],[3]] == [1,2,3]
+
+* GHC 7.10 introduced the Foldable typeclass making certain functions like `concat` more generic. e.g.
+
+  concat (Just [1,2,3]) == [1,2,3]
+
+* in type syntax, a lower-case alpha string, is a type variable AKA polymorphic
+* for example `concat` has type Foldable f => f [a] -> [a] where is a type variable. `concat` does not care what type `a` will be and thus can work across different types e.g.
+
+  concat (Just [1,2,3]) == [1,2,3]
+  concat (Just "foobar") == "foobar"
+
+### Intermission Exercises: Syntax Errors
+
+Will these compile and if not fix them.
+
+1. ++ [1,2,3] [4,5,6]
+   (++) [1,2,3] [4,5,6]
+
+2. '<3' ++ ' Haskell'
+   "<3" ++ " Haskell"
+
+3. concat ["<3", " Haskell"]
+   OK!
 -}
