@@ -63,4 +63,49 @@ print1 = putStrLn "hello world!"
 * in programming usually refers to joining linear sequences
 
 * types should usually be specified for top-level types (note to self: anyways linter defaults are to enforce this)
+
+
+
+## 3.4 Top-Level Versus Local Definitions
+
+* top-level declaration
+* visible in entire module
+* not child to any other expression
+
+* "local declaration"
+* child to another expression
+* not available outside parent expression
+
+### Intermission Exercises: Scope
+
+1. REPL: is y in scope for x?
+
+  let x = 5
+  let y = 7
+  let z = x * y
+
+  YES
+
+2. REPL: is h in scope for function y
+
+  let f = 3
+  let g = 6 * f + h
+
+  NO!
+
+3. Source: can `area` execute?
+
+  area d = pi * (r * r)
+  r = d / 2
+
+  NO! `d` is not in scope for `r` making it invalid which propogates to `area`. `pi` is ok because its from prelude
+
+4. Source: now?
+
+  area d =
+    pi * (r * r)
+    where
+    r = d / 2
+
+  YES  
 -}
