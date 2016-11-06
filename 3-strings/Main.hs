@@ -153,4 +153,89 @@ Will these compile and if not fix them.
 ## 3.7 More List Functions
 
 *  since string type is just an alias type for a list of characters all functions that can act on lists can act on strings
+
+
+
+## 3.8 Chapter Exercises
+
+### Reading Syntax
+
+Fix syntax errors as needed
+
+1a. concat [[1,2,3]], [4,5,6]
+    concat [[1,2,3], [4,5,6]]
+1b. ++ [1,2,3] [4,5,6]
+    (++) [1,2,3] [4,5,6]
+1c. (++) "hello" " world"
+    OK!
+1d. ["hello" ++ " world]
+    ["hello" ++ " world"]
+1e. 4 !! "hello"
+    "hello" !! 4
+1f. (!!) "hello" 4
+    OK!
+1g. take "4 lovely"
+    take 4 "lovely"
+1h. take 3 "awesome"
+    OK!
+
+2. Match set of inputs to set out of outputs
+
+2a. concat [[1*6], [2*6], [3*6]] == [6,12,18] -- d
+2b. "rain" ++ drop 2 "elbow" == "rainbow" -- c
+2c. 10 * head [1,2,3] == 10 -- e
+2d. (take 3 "Julie") ++ (tail "yes") == "Jules"
+2e. concat [tail [1,2,3], tail [4,5,6], tail [7,8,9]] == [2,3,5,6,8,9] -- b
+
+### Building Functions
+
+1a. "curry is awesome" ++ "!"
+1b. (take 1 . drop 4 $ "curry is awesome!") == "y"
+1c. drop 9 "Curry is awesome!" == "awesome!"
+
+2. Convert the above into functions
+-}
+
+exclaim :: String -> String
+exclaim = (++ "!")
+
+slice5th :: [a] -> [a]
+slice5th = take 1 . drop 4
+
+drop9 :: [a] -> [a]
+drop9 = drop 9
+
+{- 3. create a thirdLetter function -}
+
+thirdLetter :: [Char] -> Char
+thirdLetter = (!! 2)
+
+{- 4. Create a function that given an index returns the letter for some constant string (you choose)-}
+
+letterIndex :: Int -> Char
+letterIndex = (string !!)
+  where
+  string = "Roman"
+
+{- 5. Use drop/take to transform "Curry is awesome" to "awesome is Curry. Call the function rvrs. "-}
+
+rvrs :: String
+rvrs =
+  concat [
+    sAwesome,
+    " ",
+    sIs,
+    " ",
+    sCurry
+  ]
+  where
+  sCurry   = take 5 string
+  sIs      = take 2 . drop (5 + 1) $ string
+  sAwesome = drop (8 + 1) string
+  string   = "Curry is awesome"
+
+{-
+
+6. Put rvrs into a module 
+   I skipped this because it seemed too basic to me personally.
 -}
