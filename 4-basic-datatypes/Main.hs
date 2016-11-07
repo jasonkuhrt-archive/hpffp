@@ -102,4 +102,63 @@ changeMood Woot = Blah
 
 5. Try it in ghci
    OK!
+
+
+
+## 4.4 Numeric Types
+
+* Haskell does not just use one type of number
+
+* "integral numbers"
+* whole numbers positive and negative
+* type `Int`
+  * fixed precision, meaning it has a min/max
+  * in other words does not support arbitrarily small/large numbers
+* type `Integer`
+  * does support arbitrarily large/small numbers
+
+* "fractional"
+* not integers
+* type `Float`
+  * single-precision floating point numbers
+  * can shift how many bits used to represent numbers before/after decimal point
+  * flexible but floating point arithmetic violates some common assumptions
+  * only use with great care, probably should not be used in business applications
+  * maybe useful for graphics programming e.g. OpenGL
+* type `Double`
+  * double-precision floating point number
+  * has twice as many bits as Float to describe numbers
+* type `Rational`
+  * fractional number that describes ratio between two integers
+  * e.g. 1 / 2 :: Rational will be a value carrying two integer values: numerator 1 and denominator 2, a ratio of 1:2
+  * arbitrarily precise
+  * not as effecient as Scientific
+* type `Scientific`
+  * space effecient and almost-arbirarily precise scientific number
+  * represented using scientific notation
+  * stores coefficient as an integer
+  * stores expoent as an Int
+  * the limit on expoent technically limits the range of Scientific but in practice its unlikely to hit that limit
+  * not part of `base`, available in a library, package `scientific`
+  * much more effecient than rational
+
+* all numeric datatypes are instances of Num typeclass
+* `Num` typeclass is what provides operators like (+) (*) etc.
+* typeclasses are a way of adding functionality to types that is reusable across all datatypes that have instances of that typeclass
+* a typeclass instance defines how a particular datatype works for the methods declared by the typeclass
+
+* interestingly data constructors for numeric types are not written out because most numeric types are infinite sets of values
+
+* type `Int` is an artifact of what computer hardware has supported natively over the years
+* most programs should use `Integer` rather than `Int` unless you know otherwise for performance or some such
+* the danger of Int et al (Int8, Int16, the number of bits the type uses to represent the number) is the ability to have numbers go out of range
+* the representation used for fixed-size Int types is two's complement
+
+* operator `/` requires arguments to be instances of a typeclass Fractional
+* Fractional typeclass requires types already have an instance of Num typeclass
+  * this relation is said as Num is a superclass of Fractional
+* values of `Fractional a => a` default to `Double` type
+* `Scientific` is usually preferable
+* most people find floating point arithmetic hard to reason about
+* in order to avoid using mistakes use Scientific by default
 -}
