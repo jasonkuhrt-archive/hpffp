@@ -161,4 +161,23 @@ changeMood Woot = Blah
 * `Scientific` is usually preferable
 * most people find floating point arithmetic hard to reason about
 * in order to avoid using mistakes use Scientific by default
+
+
+
+## 4.5 Comparing Values
+
+* typeclass `Eq` concerns things that can be compared for equivilance
+* typeclass `Ord` concerns things that can be ordered
+* Char implements `Ord` therefore you can do e.g. `'a' > 'c'`
+* Char order is lexicographic (unicode order) so `'a' > 'A' == True`
+* a list can be checked against another list only if the contained datatype implements `Ord`
+
+  e.g. ERROR [Blah, Woot] > [Woot]
+  e.g. FINE  [1, 2] > [1]
+
+* the following is an error
+
+  True 'a'
+
+  becuase `==` is polymorphic over one type not two and so once given `True` requires that the next argument value must also inhabit `Bool`
 -}
