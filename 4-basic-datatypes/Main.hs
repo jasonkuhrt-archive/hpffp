@@ -180,4 +180,47 @@ changeMood Woot = Blah
   True 'a'
 
   becuase `==` is polymorphic over one type not two and so once given `True` requires that the next argument value must also inhabit `Bool`
+
+
+## 4.6 Go on and Bool me
+
+* `Bool` is a Sum Type with two constructors
+* keep above terminology in mind
+* specific types are referred to by their constructors
+* type constructors are used in type signatures
+* type constructors are not used in expressions, the stuff that constitutes our term-level
+* `Bool` type constructor does not take any arguments but many type contructors do
+* the type declaration for `Bool` creates two data constructors
+* those data constructors are `True` and `False`, both of which are of type `bool`
+* any function that accepts a type of `Bool` must allow for the possibility of either `True` or `False`
+* it is not possible for a function to only allow a subset of data constructors of a type
+* one might say: "The datatype Bool is represented by the values True or False."
+* operators that accept `Bool` include the conjunction operator && and the disjunction operator ||
+
+* "scope"
+* a way to refer to where a named binding to an expression is valid
+* something being "in scope" means being able to refer to something by its bound name
+
+### Intermission Exercises: Find the Mistakes
+
+Fix the mistakes
+
+1. not True && true
+   not True && True
+
+2. not (x = 6)
+   not (x == 6)
+
+3. (1 * 2) > 5
+   OK!
+
+4. [Merry] > [Happy]
+   ["Merry"] > ["Happy"]
+
+5. [1,2,3] ++ "look at me!"
+   ['1','2','3'] ++ "look at me!"
+
+### Conditionals With if-then-else
+
+* haskell has if-then-else expressions
 -}
