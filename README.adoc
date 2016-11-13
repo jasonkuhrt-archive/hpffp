@@ -1,0 +1,11 @@
+# Notes & solutions for book link:http://haskellbook.com[Haskell Programming]
+
+## About
+
+This repository contains my personal notes on the book link:http://haskellbook.com[Haskell Programming from first principals], as well as solutions to chapter and intermission exercises.
+
+This is my second time going through the book (the first time I stopped at Chapter 24, Parser Combinators). I am keeping systematic notes to better help me internalize the material, but also as a future reference for sharing with other people, colleagues, friends, etc.
+
+## Guide
+
+I try to commit at the end of each chapter section. If there are intermission exercises then that fact is noted in the commit. Intermission exercises tend to be brief and minimal while chapter exercises tend to be robust and thorough. If you want to skim solutions, you can safely ignore intermission exercises.
