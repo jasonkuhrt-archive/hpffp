@@ -223,4 +223,31 @@ Fix the mistakes
 ### Conditionals With if-then-else
 
 * haskell has if-then-else expressions
+
+## 4.7 Tuples
+
+* a type that permits storing multiple values within a single value
+* different tuples may have different arity, 2, 3, 4, etc. each one corresponding a different multiple of values
+* two-tuple is called pair, three, triple, etc.
+* example
+
+  ('a',1) -- pair
+  ('a',1, True) -- tripple
+* there is no one-tuple as that would be the same as the value itself
+* tuple has same data and type constructor
+* tuple is a product type
+
+  data (,) a b = (,) a b
+
+* the `a` `b` are type parameters; they must be applied to concrete types
+
+* "product type"
+* represents logical conjunction
+* bad idea to use large tuples for perf and sanity reasons
+* must tuples in the wild will not exceed arity of five
+* haskell has special syntax for tuples
+* the type constructors may be seen in the wild with the arguments in the tuple or not e.g. the following are the same
+
+  (,) a b
+  (a,b)
 -}
